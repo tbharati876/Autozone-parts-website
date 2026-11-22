@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoZone | Auto Parts & Accessories</title>
+    <meta name="description" content="Shop auto parts, car accessories, engine parts, brakes, tires and more.">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="header-top">
+            <div class="logo" onclick="navigateTo('home')">
+                <span class="logo-auto">AUTO</span><span class="logo-zone">ZONE</span>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="product-search" placeholder="Search auto parts, accessories...">
+                <button id="search-btn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="header-actions">
+                <button onclick="navigateTo('account')" class="header-action">
+                    <i class="fas fa-user"></i>
+                    <span>Account</span>
+                </button>
+
+                <button onclick="navigateTo('wishlist')" class="header-action">
+                    <i class="fas fa-heart"></i>
+                    <span>Wishlist</span>
+                    <span id="wishlist-count" class="count-badge">0</span>
+                </button>
+
+                <button onclick="navigateTo('cart')" class="header-action cart-action">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                    <span id="cart-count" class="count-badge">0</span>
+                </button>
+            </div>
+
+            <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- ================= NAVIGATION ================= -->
+        <nav class="navbar" id="nav-menu">
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link" data-page="home">Home</a></li>
+                <li><a href="#products" class="nav-link" data-page="products">Shop All</a></li>
+                <li><a href="#products" class="nav-link" data-page="products">Engine</a></li>
+                <li><a href="#products" class="nav-link" data-page="products">Brakes & Tires</a></li>
+                <li><a href="#products" class="nav-link" data-page="products">Lighting</a></li>
+                <li><a href="#products" class="nav-link" data-page="products">Accessories</a></li>
+                <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main>
+
+        <!-- ================= HOME ================= -->
+        <section id="home" class="page-section active">
+
+            <!-- HERO -->
+            <section class="hero">
+                <div class="hero-content">
+                    <span class="hero-tag">YOUR CAR. YOUR RULES.</span>
+                    <h1>Everything Your Car Needs.</h1>
+                    <p>Quality parts. Trusted brands. Performance you can count on.</p>
+                    <button class="btn btn-primary" onclick="navigateTo('products')">
+                        Shop Now <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- BENEFITS -->
+            <section class="benefits-section">
+                <div class="benefit">
+                    <i class="fas fa-truck"></i>
+                    <h3>Fast Shipping</h3>
+                    <p>Quick and reliable delivery</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Quality Guaranteed</h3>
+                    <p>Quality products you can trust</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-headset"></i>
+                    <h3>Expert Support</h3>
+                    <p>We're here to help</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-tags"></i>
+                    <h3>Great Prices</h3>
+                    <p>Value on every purchase</p>
+                </div>
+            </section>
+
+            <!-- CATEGORIES -->
+            <section class="categories-section">
+                <div class="section-heading">
+                    <span class="section-tag">EXPLORE</span>
+                    <h2>Shop by Category</h2>
+                    <p>Find the right parts for your vehicle</p>
+                </div>
+
+                <div class="category-grid">
+
+                    <div class="category-card" data-category="engine">
+                        <div class="category-icon"><i class="fas fa-cogs"></i></div>
+                        <h3>Engine Parts</h3>
+                        <p>Filters, oil, spark plugs and more</p>
+                        <span class="category-arrow"><i class="fas fa-arrow-right"></i></span>
+                    </div>
+
+                    <div class="category-card" data-category="brakes-tires">
+                        <div class="category-icon"><i class="fas fa-car"></i></div>
+                        <h3>Brakes & Tires</h3>
+                        <p>Brake pads, rotors and tires</p>
+                        <span class="category-arrow"><i class="fas fa-arrow-right"></i></span>
+                    </div>
+
+                    <div class="category-card" data-category="lighting">
+                        <div class="category-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Lighting</h3>
+                        <p>Headlights, fog lights and bulbs</p>
+                        <span class="category-arrow"><i class="fas fa-arrow-right"></i></span>
+                    </div>
+
+                    <div class="category-card" data-category="accessories">
+                        <div class="category-icon"><i class="fas fa-toolbox"></i></div>
+                        <h3>Accessories</h3>
+                        <p>Interior, exterior and car essentials</p>
+                        <span class="category-arrow"><i class="fas fa-arrow-right"></i></span>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- FEATURED PRODUCTS -->
+            <section class="featured-section">
+                <div class="section-heading">
+                    <span class="section-tag">TOP PICKS</span>
+                    <h2>Featured Products</h2>
+                    <p>Popular products for your vehicle</p>
+                </div>
+
+                <div id="product-grid" class="product-grid"></div>
+
+                <div id="no-products" class="no-products" style="display:none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No products found</h3>
+                    <p>Try changing your search or filters.</p>
+                </div>
+
+                <div class="section-footer">
+                    <button class="btn btn-outline" onclick="navigateTo('products')">
+                        View All Products
+                    </button>
+                </div>
+            </section>
+
+            <!-- PROMO -->
+            <section class="promo-section">
+                <div class="promo-content">
+                    <span class="section-tag">GEAR UP</span>
+                    <h2>Ready for the Road?</h2>
+                    <p>Discover the parts and accessories that keep your journey going.</p>
+                    <button class="btn btn-primary" onclick="navigateTo('products')">
+                        Explore Products
+                    </button>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- ================= PRODUCTS ================= -->
+        <section id="products" class="page-section">
+            <div class="page-header">
+                <span class="section-tag">OUR COLLECTION</span>
+                <h1>Shop Auto Parts</h1>
+                <p>Find quality parts and accessories for your vehicle.</p>
+            </div>
+
+            <div class="shop-container">
+
+                <!-- FILTER SIDEBAR -->
+                <aside class="filter-sidebar">
+                    <h2><i class="fas fa-filter"></i> Filters</h2>
+
+                    <div class="filter-group">
+                        <label for="category-filter">Category</label>
+                        <select id="category-filter">
+                            <option value="all">All Categories</option>
+                            <option value="engine">Engine</option>
+                            <option value="brakes-tires">Brakes & Tires</option>
+                            <option value="lighting">Lighting</option>
+                            <option value="accessories">Accessories</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="brand-filter">Brand</label>
+                        <select id="brand-filter">
+                            <option value="all">All Brands</option>
+                            <option value="Bosch">Bosch</option>
+                            <option value="Akebono">Akebono</option>
+                            <option value="Michelin">Michelin</option>
+                            <option value="Philips">Philips</option>
+                            <option value="Optima">Optima</option>
+                            <option value="K&N">K&N</option>
+                            <option value="Brembo">Brembo</option>
+                            <option value="Enkei">Enkei</option>
+                            <option value="WeatherTech">WeatherTech</option>
+                            <option value="Scosche">Scosche</option>
+                            <option value="NGK">NGK</option>
+                            <option value="Castrol">Castrol</option>
+                            <option value="Hella">Hella</option>
+                            <option value="Covercraft">Covercraft</option>
+                            <option value="Mobil 1">Mobil 1</option>
+                            <option value="Schrader">Schrader</option>
+                            <option value="Denso">Denso</option>
+                            <option value="Meguiar's">Meguiar's</option>
+                            <option value="Wilwood">Wilwood</option>
+                            <option value="Rain-X">Rain-X</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                <label for="price-filter">Price</label>
+                <select id="price-filter">
+                    <option value="all">All Prices</option>
+                    <option value="0-25">$0 – $25</option>
+                    <option value="25-50">$25 – $50</option>
+                    <option value="50-100">$50 – $100</option>
+                    <option value="100-250">$100 – $250</option>
+                    <option value="250-500">$250 – $500</option>
+                    <option value="500-1000">$500 – $1,000</option>
+                    <option value="1000+">$1,000+</option>
+                </select>
+            </div>
+
+            <button class="btn btn-outline filter-reset" onclick="resetFilters()">
+                <i class="fas fa-undo"></i> Reset Filters
+            </button>
+        </aside>
+
+        <!-- PRODUCTS CONTENT -->
+        <div class="products-content">
+            <div class="products-toolbar">
+                <p>Browse our auto parts collection</p>
+                <div class="products-sort">
+                    <label for="sort-products">Sort By</label>
+                    <select id="sort-products">
+                        <option value="default">Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating-high">Highest Rated</option>
+                        <option value="name-az">Name: A to Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="all-products-grid" class="product-grid"></div>
+
+            <div id="products-no-results" class="no-products" style="display:none;">
+                <i class="fas fa-search"></i>
+                <h3>No products found</h3>
+                <p>Try another search or reset your filters.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <!-- ================= PRODUCT DETAIL ================= -->
+    <section id="product-detail-page" class="page-section">
+        <div class="page-header">
+            <button class="btn btn-outline" onclick="navigateTo('products')">
+                <i class="fas fa-arrow-left"></i> Back to Products
+            </button>
+        </div>
+
+        <div id="product-detail"></div>
+    </section>
+
+    <!-- ================= CART ================= -->
+    <section id="cart" class="page-section">
+        <div class="page-header">
+            <span class="section-tag">YOUR SELECTION</span>
+            <h1>Shopping Cart</h1>
+            <p>Review the items you're ready to purchase.</p>
+        </div>
+
+        <div class="cart-layout">
+            <div class="cart-main">
+                <div id="empty-cart" class="empty-state">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h2>Your cart is empty</h2>
+                    <p>Add some products to get started.</p>
+                    <button class="btn btn-primary" onclick="navigateTo('products')">Start Shopping</button>
+                </div>
+
+                <div id="cart-items"></div>
+
+                <button class="btn btn-outline" data-continue-shopping>
+                    <i class="fas fa-arrow-left"></i> Continue Shopping
+                </button>
+            </div>
+
+            <aside id="cart-summary" class="cart-summary">
+                <h2>Order Summary</h2>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span id="cart-shipping">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Estimated Tax</span>
+                    <span id="cart-tax">$0.00</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button id="checkout-button" class="btn btn-primary btn-full">
+                    Proceed to Checkout
+                </button>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ================= WISHLIST ================= -->
+    <section id="wishlist" class="page-section">
+        <div class="page-header">
+            <span class="section-tag">SAVED PRODUCTS</span>
+            <h1>My Wishlist</h1>
+            <p>Products you want to save for later.</p>
+        </div>
+
+        <div id="empty-wishlist" class="empty-state">
+            <i class="fas fa-heart"></i>
+            <h2>Your wishlist is empty</h2>
+            <p>Save products that you like and find them here.</p>
+            <button class="btn btn-primary" onclick="navigateTo('products')">Explore Products</button>
+        </div>
+
+        <div id="wishlist-items" class="product-grid"></div>
+    </section>
+
+    <!-- ================= CHECKOUT ================= -->
+    <section id="checkout" class="page-section">
+        <div class="page-header">
+            <span class="section-tag">FINAL STEP</span>
+            <h1>Checkout</h1>
+            <p>Enter your shipping details to place your order.</p>
+        </div>
+
+        <div class="checkout-layout">
+            <div class="checkout-form-container">
+                <form id="checkout-form">
+                    <h2>Shipping Information</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkout-name">Full Name *</label>
+                            <input type="text" id="checkout-name" name="name" required placeholder="Full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-email">Email *</label>
+                            <input type="email" id="checkout-email" name="email" required placeholder="Email address">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkout-phone">Phone</label>
+                            <input type="tel" id="checkout-phone" name="phone" placeholder="Phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-zip">ZIP / Postal Code *</label>
+                            <input type="text" id="checkout-zip" name="zip" required placeholder="Postal code">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="checkout-address">Address *</label>
+                        <input type="text" id="checkout-address" name="address" required placeholder="Street address">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkout-city">City *</label>
+                            <input type="text" id="checkout-city" name="city" required placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-state">State</label>
+                            <input type="text" id="checkout-state" name="state" placeholder="State">
+                        </div>
+                    </div>
+
+                    <h2>Payment Method</h2>
+
+                    <div class="form-group">
+                        <label for="checkout-payment">Select Payment</label>
+                        <select id="checkout-payment" name="payment" required>
+                            <option value="">Choose payment method</option>
+                            <option value="Credit/Debit Card">Credit / Debit Card (Demo)</option>
+                            <option value="PayPal">PayPal (Demo)</option>
+                            <option value="Cash on Delivery">Cash on Delivery</option>
+                        </select>
+                    </div>
+
+                    <p class="checkout-note">
+                        <i class="fas fa-lock"></i>
+                        Demo checkout only. No real payment will be processed.
+                    </p>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        Place Order
+                    </button>
+                </form>
+            </div>
+
+            <aside class="checkout-summary">
+                <h2>Order Summary</h2>
+                <div id="checkout-items"></div>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="checkout-subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span id="checkout-shipping">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Estimated Tax</span>
+                    <span id="checkout-tax">$0.00</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span id="checkout-total">$0.00</span>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ================= ORDER SUCCESS ================= -->
+    <section id="order-success" class="page-section">
+        <div class="order-success-content">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h1>Order Placed Successfully!</h1>
+            <p>Thank you for shopping with AutoZone.</p>
+            <button class="btn btn-primary" onclick="navigateTo('products')">Continue Shopping</button>
+            <button class="btn btn-outline" onclick="navigateTo('account')">View My Orders</button>
+        </div>
+    </section>
+
+    <!-- ================= ACCOUNT ================= -->
+    <section id="account" class="page-section">
+        <div class="page-header">
+            <span class="section-tag">CUSTOMER AREA</span>
+            <h1>My Account</h1>
+            <p>Login, manage your profile and view your orders.</p>
+        </div>
+
+        <div id="account-content"></div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="page-section">
+        <div class="page-header">
+            <span class="section-tag">GET IN TOUCH</span>
+            <h1>Contact Us</h1>
+            <p>Have a question? Send us a message.</p>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>support@autozone-demo.com</p>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>1-800-AUTO-HELP</p>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>Support Hours</h3>
+                    <p>Monday – Saturday</p>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" name="email" required placeholder="Your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-subject">Subject</label>
+                        <input type="text" id="contact-subject" name="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="5" required placeholder="Write your message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= NEWSLETTER ================= -->
+    <section id="newsletter" class="newsletter-section">
+        <div class="newsletter-content">
+            <h2>Stay in the Loop</h2>
+            <p>Subscribe to our newsletter for updates and special offers.</p>
+            <form id="newsletter-form">
+                <input type="email" name="email" required placeholder="Enter your email address">
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-auto">AUTO</span><span class="logo-zone">ZONE</span>
+                </div>
+                <p>Your trusted destination for auto parts and accessories.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="#home" onclick="navigateTo('home'); return false;">Home</a>
+                <a href="#products" onclick="navigateTo('products'); return false;">Shop</a>
+                <a href="#account" onclick="navigateTo('account'); return false;">My Account</a>
+                <a href="#contact" onclick="navigateTo('contact'); return false;">Contact</a>
+            </div>
+
+            <div class="footer-links">
+                <h3>Customer Service</h3>
+                <a href="#contact" onclick="navigateTo('contact'); return false;">Contact Us</a>
+                <a href="#cart" onclick="navigateTo('cart'); return false;">Shopping Cart</a>
+                <a href="#wishlist" onclick="navigateTo('wishlist'); return false;">Wishlist</a>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 AutoZone Demo Store. All rights reserved.</p>
+            <p>Demo website for educational purposes. Not affiliated with the official AutoZone company.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div id="toast-message" class="toast-message"></div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
